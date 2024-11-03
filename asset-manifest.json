@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Vigneshxz/react-layout.git/real-madrid-fan-club/static/css/main.ecfc5f4a.css",
+    "main.js": "/Vigneshxz/react-layout.git/real-madrid-fan-club/static/js/main.25bcf530.js",
+    "static/js/453.4406ade6.chunk.js": "/Vigneshxz/react-layout.git/real-madrid-fan-club/static/js/453.4406ade6.chunk.js",
+    "index.html": "/Vigneshxz/react-layout.git/real-madrid-fan-club/index.html",
+    "main.ecfc5f4a.css.map": "/Vigneshxz/react-layout.git/real-madrid-fan-club/static/css/main.ecfc5f4a.css.map",
+    "main.25bcf530.js.map": "/Vigneshxz/react-layout.git/real-madrid-fan-club/static/js/main.25bcf530.js.map",
+    "453.4406ade6.chunk.js.map": "/Vigneshxz/react-layout.git/real-madrid-fan-club/static/js/453.4406ade6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ecfc5f4a.css",
+    "static/js/main.25bcf530.js"
+  ]
+}
