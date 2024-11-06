@@ -24,7 +24,7 @@ function App() {
   };
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Header />
       <div className="App" style={appStyle}>
         <Routes>
