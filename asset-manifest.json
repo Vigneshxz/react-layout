@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-layout/project/static/css/main.fb9ee8b8.css",
-    "main.js": "/react-layout/project/static/js/main.c49f7959.js",
-    "static/js/453.5e560239.chunk.js": "/react-layout/project/static/js/453.5e560239.chunk.js",
-    "index.html": "/react-layout/project/index.html",
-    "main.fb9ee8b8.css.map": "/react-layout/project/static/css/main.fb9ee8b8.css.map",
-    "main.c49f7959.js.map": "/react-layout/project/static/js/main.c49f7959.js.map",
-    "453.5e560239.chunk.js.map": "/react-layout/project/static/js/453.5e560239.chunk.js.map"
+    "main.css": "/react-layout/static/css/main.fb9ee8b8.css",
+    "main.js": "/react-layout/static/js/main.f4cf3903.js",
+    "static/js/453.5e560239.chunk.js": "/react-layout/static/js/453.5e560239.chunk.js",
+    "index.html": "/react-layout/index.html",
+    "main.fb9ee8b8.css.map": "/react-layout/static/css/main.fb9ee8b8.css.map",
+    "main.f4cf3903.js.map": "/react-layout/static/js/main.f4cf3903.js.map",
+    "453.5e560239.chunk.js.map": "/react-layout/static/js/453.5e560239.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fb9ee8b8.css",
-    "static/js/main.c49f7959.js"
+    "static/js/main.f4cf3903.js"
   ]
 }
