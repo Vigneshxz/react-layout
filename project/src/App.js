@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import FanClubs from './components/FanClubs';
@@ -10,7 +10,7 @@ import Gallery from './components/Gallery';
 import PlayerProfile from './components/PlayerProfile';
 import Schedule from './components/Schedule';
 import Comments from './components/Comments';
-import Contact from './components/Contact'; 
+import Contact from './components/Contact';
 import './App.css';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <BrowserRouter basename={process.env.NODE_ENV === 'production' ? process.env.PUBLIC_URL : ''}>
       <Header />
       <div className="App" style={appStyle}>
         <Routes>
@@ -43,11 +43,11 @@ function App() {
           <Route path="/profile" element={<PlayerProfile />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/comments" element={<Comments />} />
-          <Route path="/contact" element={<Contact />} /> {/* Add Contact route */}
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
 
