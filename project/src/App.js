@@ -24,7 +24,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter basename={process.env.NODE_ENV === 'production' ? process.env.PUBLIC_URL : ''}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
       <div className="App" style={appStyle}>
         <Routes>
