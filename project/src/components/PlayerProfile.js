@@ -1,84 +1,97 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './PlayerProfile.css';
 
 const PlayerProfile = () => {
-  const profileStyle = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${process.env.PUBLIC_URL}/images/madridlogo.jpeg)`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    minHeight: '100vh',
-    color: 'white',
-    padding: '50px 20px',
+  const [players, setPlayers] = useState([]);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
+
+  // Fetch player data from your server
+  useEffect(() => {
+    fetch('https://real-madrid-api.onrender.com/api/players')
+      .then(response => response.json())
+      .then(data => setPlayers(data))
+      .catch(error => console.error('Error fetching players:', error));
+  }, []);
+
+  // Function to show player details in popup
+  const showPlayerInfo = (player) => {
+    setSelectedPlayer(player); // Set the player details in state
   };
 
+  // Function to close the popup
+  const closePopup = () => {
+    setSelectedPlayer(null); // Clear the selected player
+  };
+
+  // Helper function to get full image URL
+  const getImageUrl = (imgName) => `https://real-madrid-api.onrender.com${imgName}`;
+
   return (
-    <div style={profileStyle}>
+    <div className="player-profile">
       <section className="content">
         <h1>Player Profile</h1>
 
-        {/* Goalkeepers */}
+        {/* Display players grouped by position */}
         <h2>Goalkeepers</h2>
         <div className="player-section">
-          <div className="player-box">
-            <img src={`${process.env.PUBLIC_URL}/players/Thibaut-Courtois.jpeg`} alt="Thibaut Courtois" />
-            <p>Thibaut Courtois</p>
-          </div>
+          {players
+            .filter(player => player.position === 'Goalkeeper')
+            .map(player => (
+              <div key={player._id} className="player-box" onClick={() => showPlayerInfo(player)}>
+                <img src={getImageUrl(player.img_name)} alt={player.name} />
+                <p>{player.name}</p>
+              </div>
+            ))}
         </div>
 
-        {/* Defenders */}
         <h2>Defenders</h2>
         <div className="player-section">
-          <div className="player-box">
-            <img src={`${process.env.PUBLIC_URL}/players/danicarv.jpeg`} alt="Dani Carvajal" />
-            <p>Dani Carvajal</p>
-          </div>
-          <div className="player-box">
-            <img src={`${process.env.PUBLIC_URL}/players/rudiger.jpeg`} alt="Antonio Rüdiger" />
-            <p>Antonio Rüdiger</p>
-          </div>
-          <div className="player-box">
-            <img src={`${process.env.PUBLIC_URL}/players/alaba.jpeg`} alt="David Alaba" />
-            <p>David Alaba</p>
-          </div>
+          {players
+            .filter(player => player.position === 'Defender')
+            .map(player => (
+              <div key={player._id} className="player-box" onClick={() => showPlayerInfo(player)}>
+                <img src={getImageUrl(player.img_name)} alt={player.name} />
+                <p>{player.name}</p>
+              </div>
+            ))}
         </div>
 
-        {/* Midfielders */}
         <h2>Midfielders</h2>
         <div className="player-section">
-          <div className="player-box">
-            <img src={`${process.env.PUBLIC_URL}/players/cama.jpeg`} alt="Eduardo Camavinga" />
-            <p>Eduardo Camavinga</p>
-          </div>
-          <div className="player-box">
-            <img src={`${process.env.PUBLIC_URL}/players/modric.jpeg`} alt="Luka Modrić" />
-            <p>Luka Modrić</p>
-          </div>
+          {players
+            .filter(player => player.position === 'Midfielder')
+            .map(player => (
+              <div key={player._id} className="player-box" onClick={() => showPlayerInfo(player)}>
+                <img src={getImageUrl(player.img_name)} alt={player.name} />
+                <p>{player.name}</p>
+              </div>
+            ))}
         </div>
 
-        {/* Forwards */}
         <h2>Forwards</h2>
         <div className="player-section">
-          <div className="player-box">
-            <img src={`${process.env.PUBLIC_URL}/players/vini.jpeg`} alt="Vinícius Júnior" />
-            <p>Vinícius Júnior</p>
-          </div>
-          <div className="player-box">
-            <img src={`${process.env.PUBLIC_URL}/players/diaz.jpeg`} alt="Diaz" />
-            <p>Diaz</p>
-          </div>
+          {players
+            .filter(player => player.position === 'Forward')
+            .map(player => (
+              <div key={player._id} className="player-box" onClick={() => showPlayerInfo(player)}>
+                <img src={getImageUrl(player.img_name)} alt={player.name} />
+                <p>{player.name}</p>
+              </div>
+            ))}
         </div>
 
-        {/* Placeholder Popup */}
-        <div className="popup" id="popup">
-          <div className="popup-content">
-            <h2 id="popup-title">Player Name</h2>
-            <p id="popup-stats">Player stats will appear here.</p>
-            <button className="close-btn" onClick={() => document.getElementById('popup').style.display = 'none'}>
-              Close
-            </button>
+        {/* Popup for displaying player details */}
+        {selectedPlayer && (
+          <div className="popup" onClick={closePopup}>
+            <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+              <h2>{selectedPlayer.name}</h2>
+              <p><strong>Position:</strong> {selectedPlayer.position}</p>
+              <p><strong>Nationality:</strong> {selectedPlayer.nationality}</p>
+              <img src={getImageUrl(selectedPlayer.img_name)} alt={selectedPlayer.name} />
+              <button className="close-btn" onClick={closePopup}>Close</button>
+            </div>
           </div>
-        </div>
+        )}
       </section>
     </div>
   );

@@ -1,28 +1,72 @@
-header {
+/* Basic Header Styles */
+.header {
     background-color: #0a0742;
     color: white;
-    padding: 10px 0;
-}
-
-nav ul {
+    padding: 10px 20px;
+    position: relative;
+    z-index: 10; /* Ensure header is above other content */
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .nav-links {
     list-style-type: none;
     display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
+    gap: 15px;
+  }
+  
+  .nav-links a {
     color: white;
     text-decoration: none;
     font-size: 18px;
-}
-
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block; /* Show toggle button on smaller screens */
     }
-}
+  
+    .nav-links {
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #0a0742;
+      width: 100%;
+      display: none;
+      z-index: 10; /* Keep the menu above other content */
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    }
+  
+    /* When the menu is open */
+    .nav-links.open {
+      display: flex;
+    }
+  
+    .nav-links li {
+      padding: 10px 0;
+      border-top: 1px solid white;
+    }
+  
+    .nav-links a {
+      padding: 10px;
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+  }
+  
