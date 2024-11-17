@@ -68,7 +68,7 @@ const Comments = () => {
         setSuccess("Comment added successfully!");
         setCommentInput("");
         setImage(null);
-        fetchComments(); // Refresh comments list
+        fetchComments(); 
       } else {
         setError(result.message || "Failed to add comment.");
       }
