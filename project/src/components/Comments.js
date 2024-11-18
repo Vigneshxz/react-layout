@@ -8,6 +8,8 @@ const Comments = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  const BACKEND_URL = "https://real-madrid-api.onrender.com";
+
   const commentsStyle = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${process.env.PUBLIC_URL}/images/comment.jpeg)`,
     backgroundRepeat: "no-repeat",
@@ -24,7 +26,7 @@ const Comments = () => {
 
   const fetchComments = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/comments");
+      const response = await fetch(`${BACKEND_URL}/api/comments`);
       if (!response.ok) {
         throw new Error(`Error: ${response.status} ${response.statusText}`);
       }
@@ -50,14 +52,13 @@ const Comments = () => {
     setError("");
     setSuccess("");
 
-    // Check if both fields are empty
     if (!commentInput.trim() && !image) {
       setError("Please provide a comment or an image.");
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:3001/api/comments", {
+      const response = await fetch(`${BACKEND_URL}/api/comments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ comment: commentInput || null, image: image || null }),
@@ -68,7 +69,7 @@ const Comments = () => {
         setSuccess("Comment added successfully!");
         setCommentInput("");
         setImage(null);
-        fetchComments(); 
+        fetchComments();
       } else {
         setError(result.message || "Failed to add comment.");
       }
@@ -83,7 +84,7 @@ const Comments = () => {
     setSuccess("");
 
     try {
-      const response = await fetch(`http://localhost:3001/api/comments/${id}`, {
+      const response = await fetch(`${BACKEND_URL}/api/comments/${id}`, {
         method: "DELETE",
       });
       if (!response.ok) {
@@ -94,7 +95,7 @@ const Comments = () => {
 
       if (result.success) {
         setSuccess("Comment deleted successfully!");
-        fetchComments(); // Refresh comments list
+        fetchComments();
       } else {
         setError(result.message || "Failed to delete the comment.");
       }
