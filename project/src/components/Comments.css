@@ -1,89 +1,96 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    color: #0a0742;
-  }
-  
-  .comments-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .content {
-    flex: 1;
-    padding: 50px 20px;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    max-width: 800px;
-    margin: 20px auto;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .content h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #0a0742;
-  }
-  
-  .comment-form {
-    margin: 20px 0;
-  }
-  
-  .comment-form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #0a0742;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    resize: vertical;
-  }
-  
-  .comment-form button {
-    background-color: #0a0742;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .comment-form button:hover {
-    background-color: #3a3f7f;
-  }
-  
-  .comments-list {
-    text-align: left;
-    margin-top: 20px;
-  }
-  
-  .comments-list ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .comments-list li {
-    margin: 10px 0;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .trash-icon {
-    cursor: pointer;
-    color: #d9534f;
-  }
-  .comments-list img {
-    border-radius: 4px;
-    margin-top: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #0a0742;
+}
+
+.comments-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  padding: 50px 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 20px auto;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #0a0742;
+}
+
+.comment-form {
+  margin: 20px 0;
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #0a0742;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+
+.comment-form button {
+  background-color: #0a0742;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background-color: #3a3f7f;
+}
+
+.comments-list {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.comments-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comments-list li {
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: flex-start; /* Align text and image at the top */
+  gap: 15px;
+}
+
+.comments-list li .text {
+  flex: 1; /* Ensure the text section takes up remaining space */
+  word-wrap: break-word;
+}
+
+.comments-list li img {
+  max-width: 100px; /* Set maximum width */
+  max-height: 100px; /* Set maximum height */
+  border-radius: 4px;
+  object-fit: cover; /* Maintain aspect ratio and fit within bounds */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.trash-icon {
+  cursor: pointer;
+  color: #d9534f;
+}
